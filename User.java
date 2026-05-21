@@ -1,4 +1,4 @@
-public class User {
+public abstract class User {
     private String username;
     private String password;
  
@@ -18,4 +18,6 @@ public class User {
     public void login() {
         System.out.println(username + " berhasil login ke sistem.");
     }
+
+    public abstract String getRole();
 }
