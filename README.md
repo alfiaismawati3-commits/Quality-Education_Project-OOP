@@ -16,4 +16,4 @@
 CLASS DIAGRAM :
 (lihat gambar di bawah)
 
-Gambar : ./Quality Education-class-oop.drawio.png
+Gambar : Quality Education-class-oop.drawio.png
