@@ -24,6 +24,16 @@ public class MateriController {
         }
     }
 
+    // READ by ID
+    public Materi getMateriById(int id) {
+    for (Materi m : materiList) {
+        if (m.getIdMateri() == id) {
+            return m;
+        }
+    }
+    return null;
+}
+
     // UPDATE
     public void updateMateri(int id, String judulBaru, String isiBaru) {
         for (Materi m : materiList) {
