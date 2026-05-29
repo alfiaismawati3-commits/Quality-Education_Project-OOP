@@ -43,11 +43,23 @@ public class MateriControllerTest {
 
    @Test
     void testValidasiMateri() {
+        // 1. Tambahkan materi baru ke controller
         controller.addMateri("OOP Analysis", "Software Design", "Isi materi", instruktur);
-        Materi m = controller.getMateriById(1); // ganti dari get(0)
+        Materi m = controller.getMateriById(1);
 
+        // 2. Buat objek NotifikasiController untuk menampung alur notifikasi baru
+        NotifikasiController notifController = new NotifikasiController();
+
+        // 3. Pastikan status awalnya memang belum divalidasi
         assertEquals("Belum divalidasi", m.getStatusValidasi());
-        admin.validasiMateri(m);
+
+        // 4. Panggil metode validasi baru yang ada di dalam MateriController
+        controller.validasiMateri(admin, 1, notifController);
+
+        // 5. Cek apakah status materi sudah berubah (Berhasil divalidasi)
         assertNotEquals("Belum divalidasi", m.getStatusValidasi());
+
+        // 6. Opsional: Kamu juga bisa tes apakah notifikasinya otomatis masuk ke riwayat!
+        assertEquals(1, notifController.getSize());
     }
 }
