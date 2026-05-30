@@ -1,9 +1,15 @@
+import javax.swing.SwingUtilities;
+
 public class Main {
     public static void main(String[] args) {
 
         System.out.println("========================================");
         System.out.println("   QUALITY EDUCATION — OOP DEMO");
         System.out.println("========================================\n");
+        Instruktur ins1   = new Instruktur("pak_bayu", "pass123", "INS-001");
+        Admin      adm1   = new Admin("admin1", "admin123", "ADM-01");
+        Siswa      siswa1 = new Siswa("budi_s", "budi99", "SIS-001", "menengah");
+        Siswa      siswa2 = new Siswa("citra_r", "citra22", "SIS-002", "pemula");
 
         // Buat objek (POLYMORPHISM: semua adalah User)
         Admin      admin      = new Admin("admin01", "pass123", "ADM-001");
@@ -55,5 +61,25 @@ public class Main {
         System.out.println("Admin verifikasi 'pass123'  : " + admin.verifyPassword("pass123"));
         System.out.println("Admin verifikasi 'salah'    : " + admin.verifyPassword("salah"));
         System.out.println("Siswa verifikasi 'siswa123' : " + siswa.verifyPassword("siswa123"));
+        broadcastPesan(ins1,
+            "Materi Disetujui",
+            "Materi 'OOP Analysis' telah disetujui.");
+
+        broadcastPesan(siswa1,
+            "Quiz Baru Tersedia",
+            "Quiz 'OOP Lanjutan' dibuka, selesaikan sebelum 30 April.");
+
+        broadcastPesan(siswa2,
+            "Selamat Datang",
+            "Akun Anda aktif. Mulai belajar sekarang!");
+
+        System.out.println("\n Semua demo selesai!");
+        System.out.println("----------------------------------------------");
+        System.out.println("MEMBUKA ANTARMUKA GUI (MATERI APP)...");
+        System.out.println("----------------------------------------------");
+
+        SwingUtilities.invokeLater(() -> {
+            new MateriApp();
+        });
     }
 }
